@@ -1,0 +1,23 @@
+body {
+    background-color: #bcbcbc;
+}
+
+.title {
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    color: #1271ff;
+}
+
+.container {
+    width: 500px;
+    height: 500px;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+a:link {text-decoration:none; color: #1271ff;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
