@@ -1,5 +1,5 @@
 import json
-import urllib2
+import urllib.request
 from random import randint
 
 import flask
@@ -7,9 +7,9 @@ import re
 
 app = flask.Flask(__name__)
 
-req = urllib2.Request("http://www.reddit.com/r/aww/top/.json?limit=100")
+req = urllib.request.Request("http://www.reddit.com/r/aww/top/.json?limit=100")
 req.add_header("User-agent", "My reddit cute api bot")
-data = json.load(urllib2.urlopen(req))
+data = json.load(urllib.request.urlopen(req))
 cute_things = []
 for cute_thing in data['data']['children']:
     link = cute_thing['data']['url']
