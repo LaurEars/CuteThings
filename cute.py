@@ -1,15 +1,15 @@
 import json
-import urllib2
+import urllib.request
 from random import randint
+import re
 
 import flask
-import re
 
 app = flask.Flask(__name__)
 
-req = urllib2.Request("http://www.reddit.com/r/aww/top/.json?limit=100")
+req = urllib.request.Request("http://www.reddit.com/r/aww/top/.json?limit=100")
 req.add_header("User-agent", "My reddit cute api bot")
-data = json.load(urllib2.urlopen(req))
+data = json.load(urllib.request.urlopen(req))
 cute_things = []
 for cute_thing in data['data']['children']:
     link = cute_thing['data']['url']
@@ -25,6 +25,7 @@ for cute_thing in data['data']['children']:
     permalink = 'http://reddit.com' + cute_thing['data']['permalink']
     cute_things.append({'url': image_url, 'title': title, 'permalink': permalink})
 
+
 @app.route("/")
 def first_page():
     rand_idx = randint(0, len(cute_things))
@@ -33,6 +34,7 @@ def first_page():
     permalink = cute_things[rand_idx]['permalink']
 
     return flask.render_template('cute.html', image_url=url, permalink=permalink, title=title)
+
 
 if __name__ == "__main__":
     app.run(port=3000)
