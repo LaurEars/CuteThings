@@ -41,7 +41,7 @@ def fetch_cute_things():
 @app.route("/")
 def first_page():
     cute_things = fetch_cute_things()
-    rand_idx = randint(0, len(cute_things))
+    rand_idx = randint(0, len(cute_things) - 1)
     title = cute_things[rand_idx]['title']
     url = cute_things[rand_idx]['url']
     permalink = cute_things[rand_idx]['permalink']
